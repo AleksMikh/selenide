@@ -19,13 +19,9 @@ public class CardDeliveryTest {
 
     String planningDate = generateDate(3);
 
-    @BeforeEach
-    void setUpTests() {
-        open("http://localhost:9999");
-    }
-
     @Test
     void positiveTest() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -37,12 +33,14 @@ public class CardDeliveryTest {
 
     @Test
     void emptyCity() {
+        open("http://localhost:9999");
         $$("button").find(exactText("Забронировать")).click();
         $("[data-test-id=city].input_invalid").should(exactText("Поле обязательно для заполнения"));
     }
 
     @Test
     void cityNotSupported() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Арбузякино");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -54,6 +52,7 @@ public class CardDeliveryTest {
 
     @Test
     void invalidData() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(0));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -65,6 +64,7 @@ public class CardDeliveryTest {
 
     @Test
     void invalidData2() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys("28.13.2023");
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -76,6 +76,7 @@ public class CardDeliveryTest {
 
     @Test
     void emptyName() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=phone] input").setValue("+79266565566");
@@ -86,6 +87,7 @@ public class CardDeliveryTest {
 
     @Test
     void invalidName() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Alekseev Mikhail");
@@ -97,6 +99,7 @@ public class CardDeliveryTest {
 
     @Test
     void emptyPhone() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -107,6 +110,7 @@ public class CardDeliveryTest {
 
     @Test
     void invalidPhone() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
@@ -118,6 +122,7 @@ public class CardDeliveryTest {
 
     @Test
     void emptyCheckbox() {
+        open("http://localhost:9999");
         $("[data-test-id=city] input").setValue("Москва");
         $("[data-test-id=date] input").doubleClick().sendKeys(generateDate(3));
         $("[data-test-id=name] input").setValue("Алексеев Михаил");
